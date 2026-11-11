@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع القرآن الكريم والذكر الشامل - تصميم المصمم محمد سعيد ابراهيم فرج</title>
+    <!-- خطوط جوجل العربية الفخمة -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #046c4e;
+            --primary-dark: #024a34;
+            --accent: #d4af37;
+            --bg-light: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-main: #2b2b2b;
+            --text-muted: #666666;
+            --shadow: 0 10px 25px rgba(0,0,0,0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        /* الهيدر واسم المصمم البارز */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: #ffffff;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .designer-badge {
+            background: linear-gradient(135deg, #ffd700, #d4af37);
+            color: #111111;
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            border: 2px solid #fff;
+            animation: bounceGlow 2.5s infinite;
+        }
+
+        @keyframes bounceGlow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6); }
+        }
+
+        header h1 {
+            font-family: 'Amiri', serif;
+            font-size: 2.8rem;
+            margin-bottom: 0.4rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.15rem;
+            opacity: 0.95;
+        }
+
+        /* شريط التنقل بين الأقسام */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            background: var(--card-bg);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            overflow-x: auto;
+            padding: 0.5rem;
+        }
+
+        .nav-tab {
+            padding: 12px 22px;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--text-muted);
+            border-bottom: 4px solid transparent;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.05rem;
+            border-radius: 8px;
+            margin: 0 4px;
+        }
+
+        .nav-tab.active, .nav-tab:hover {
+            color: var(--primary);
+            border-bottom-color: var(--accent);
+            background: rgba(4, 108, 78, 0.05);
+        }
+
+        /* حاوية المحتوى الرئيسي */
+        .container {
+            max-width: 1050px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-content {
+            display: none;
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.4s ease-in-out;
+            border: 1px solid #eaeaea;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2.section-title {
+            font-family: 'Amiri', serif;
+            color: var(--primary);
+            margin-bottom: 1.8rem;
+            font-size: 2.2rem;
+            text-align: center;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 0.8rem;
+        }
+
+        /* أدوات السور والقراءة */
+        .controls-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        select, input[type="text"] {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            font-size: 1.05rem;
+            outline: none;
+            background: #fff;
+            transition: border-color 0.3s;
+            font-weight: 600;
+        }
+
+        select:focus, input[type="text"]:focus {
+            border-color: var(--primary);
+        }
+
+        .quran-box {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            text-align: justify;
+            line-height: 2.5;
+            padding: 2.5rem;
+            background: #fffdf9;
+            border: 2px solid #e8dec5;
+            border-radius: 14px;
+            min-height: 350px;
+            color: #1a1a1a;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        /* بطاقات الشيوخ والصوتيات */
+        .sheikh-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 20px;
+            margin-bottom: 2.5rem;
+        }
+
+        .sheikh-card {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sheikh-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+        }
+
+        .sheikh-card.selected {
+            border-color: var(--primary);
+            background: rgba(4, 108, 78, 0.08);
+        }
+
+        .sheikh-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .sheikh-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .audio-box {
+            background: #111827;
+            color: #fff;
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .audio-box audio {
+            width: 100%;
+            margin-top: 15px;
+            accent-color: var(--accent);
+        }
+
+        /* المسبحة الإلكترونية */
+        .sebha-wrapper {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .sebha-phrase {
+            font-size: 1.6rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-family: 'Amiri', serif;
+        }
+
+        .counter-display {
+            font-size: 5rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin: 1.5rem 0;
+            background: #f0fdf4;
+            display: inline-block;
+            padding: 15px 70px;
+            border-radius: 30px;
+            border: 3px dashed var(--primary);
+            box-shadow: inset 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .btn-sebha {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 22px 55px;
+            font-size: 1.6rem;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(4, 108, 78, 0.3);
+            transition: all 0.1s ease;
+            margin: 15px 0;
+            font-weight: 700;
+        }
+
+        .btn-sebha:active {
+            transform: scale(0.96);
+            box-shadow: 0 3px 10px rgba(4, 108, 78, 0.3);
+        }
+
+        .btn-reset {
+            background: #fee2e2;
+            color: #dc2626;
+            border: 2px solid #fecaca;
+            padding: 10px 25px;
+            font-size: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background 0.3s;
+        }
+
+        .btn-reset:hover {
+            background: #fecaca;
+        }
+
+        /* الأذكار والأدعية */
+        .azkar-card {
+            background: #f8fafc;
+            border-right: 6px solid var(--accent);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .azkar-card h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .azkar-card p {
+            font-size: 1.15rem;
+            font-family: 'Amiri', serif;
+            line-height: 1.9;
+        }
+
+        /* الفوتر */
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            background: #111827;
+            color: #9ca3af;
+            margin-top: 4rem;
+            border-top: 3px solid var(--accent);
+        }
+
+        footer .footer-designer {
+            color: #ffffff;
+            font-weight: 900;
+            font-size: 1.25rem;
+            margin-top: 8px;
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.15);
+            padding: 8px 25px;
+            border-radius: 30px;
+            border: 1px solid var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اسم المصمم البارز جداً -->
+    <header>
+        <div class="designer-badge">
+            <i class="fa-solid fa-medal"></i> تصميم وبرمجة: المصمم محمد سعيد ابراهيم فرج
+        </div>
+        <h1>موقع القرآن الكريم والذكر الشامل</h1>
+        <p>مرجعك الإسلامي المتكامل لقراءة وتلاوة القرآن الكريم، الاستماع لكبار القراء، والذكر الدائم</p>
+    </header>
+
+    <!-- شريط الأقسام -->
+    <div class="nav-tabs">
+        <div class="nav-tab active" onclick="switchTab('quran', event)"><i class="fa-solid fa-book-quran"></i> قراءة القرآن</div>
+        <div class="nav-tab" onclick="switchTab('audio', event)"><i class="fa-solid fa-headphones"></i> الاستماع للشيوخ</div>
+        <div class="nav-tab" onclick="switchTab('sebha', event)"><i class="fa-solid fa-circle-dot"></i> المسبحة الإلكترونية</div>
+        <div class="nav-tab" onclick="switchTab('azkar', event)"><i class="fa-solid fa-hands-praying"></i> حصن المسلم والأذكار</div>
+    </div>
+
+    <!-- محتوى الأقسام -->
+    <div class="container">
+
+        <!-- 1. قسم قراءة القرآن -->
+        <div id="quran" class="section-content active">
+            <h2 class="section-title">تصفح وقراءة القرآن الكريم</h2>
+            <div class="controls-row">
+                <select id="surahSelect" onchange="loadSurahText()">
+                    <!-- تعبئة السور ديناميكياً -->
+                </select>
+            </div>
+            <div id="quranTextBox" class="quran-box">
+                جاري تحميل آيات المصحف الشريف...
+            </div>
+        </div>
+
+        <!-- 2. قسم الاستماع للشيوخ -->
+        <div id="audio" class="section-content">
+            <h2 class="section-title">الاستماع للقرآن الكريم بأصوات كبار الشيوخ</h2>
+            
+            <div class="sheikh-grid">
+                <div class="sheikh-card selected" onclick="selectSheikh('https://server11.mp3quran.net/yasser/', 'الشيخ ياسر الدوسري', this)">
+                    <h3>الشيخ ياسر الدوسري</h3>
+                    <p>تلاوة خاشعة وعطرة</p>
+                </div>
+                <div class="sheikh-card" onclick="selectSheikh('https://server11.mp3quran.net/sds/', 'الشيخ عبد الرحمن السديس', this)">
+                    <h3>الشيخ عبد الرحمن السديس</h3>
+                    <p>إمام الحرم المكي</p>
+                </div>
+                <div class="sheikh-card" onclick="selectSheikh('https://server10.mp3quran.net/ajm/', 'الشيخ أحمد العجمي', this)">
+                    <h3>الشيخ أحمد العجمي</h3>
+                    <p>صوت قوي ومرتل</p>
+                </div>
+                <div class="sheikh-card" onclick="selectSheikh('https://server12.mp3quran.net/maher/', 'الشيخ ماهر المعقيلي', this)">
+                    <h3>الشيخ ماهر المعقيلي</h3>
+                    <p>تلاوة مباركة مميزة</p>
+                </div>
+            </div>
+
+            <div class="controls-row">
+                <select id="audioSurahSelect" onchange="playAudio()">
+                    <!-- تعبئة السور للصوتيات -->
+                </select>
+            </div>
+
+            <div class="audio-box">
+                <h3 id="currentPlayingTitle" style="color: var(--accent); margin-bottom: 8px; font-size: 1.2rem;">اختر السورة للاستماع الفوري</h3>
+                <audio id="audioPlayer" controls></audio>
+            </div>
+        </div>
+
+        <!-- 3. قسم المسبحة الإلكترونية -->
+        <div id="sebha" class="section-content">
+            <h2 class="section-title">المسبحة الإلكترونية المباركة</h2>
+            <div class="sebha-wrapper">
+                <div class="sebha-phrase">"ألا بذكر الله تطمئن القلوب"</div>
+                <div class="counter-display" id="counter">0</div>
+                <br>
+                <button class="btn-sebha" onclick="incrementSebha()"><i class="fa-solid fa-fingerprint"></i> سبح الآن</button>
+                <br>
+                <button class="btn-reset" onclick="resetSebha()"><i class="fa-solid fa-rotate-right"></i> تصفير العداد</button>
+            </div>
+        </div>
+
+        <!-- 4. قسم الأذكار -->
+        <div id="azkar" class="section-content">
+            <h2 class="section-title">حصن المسلم - الأذكار والأدعية اليومية</h2>
+            
+            <div class="azkar-card">
+                <h3>أذكار الصباح والمساء</h3>
+                <p>اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ. (وأيضاً: أمسينا وأمسى الملك لله).</p>
+            </div>
+
+            <div class="azkar-card">
+                <h3>سيد الاستغفار</h3>
+                <p>اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ...</p>
+            </div>
+
+            <div class="azkar-card">
+                <h3>تسابيح مباركة جامعة</h3>
+                <p>سُبْحَانَ اللَّهِ، وَالْحَمْدُ لِلَّهِ، وَلَا إِلَهَ إِلَّا اللَّهُ، وَاللَّهُ أَكْبَرُ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- الفوتر مع اسم المصمم -->
+    <footer>
+        <p>تم تطوير هذا الموقع ونشره ليكون صدقة جارية عن روح المسلمين والمسلمات.</p>
+        <div class="footer-designer">
+            <i class="fa-solid fa-code"></i> التصميم والبرمجة: المصمم محمد سعيد ابراهيم فرج
+        </div>
+        <p style="margin-top: 15px; font-size: 0.85rem; color: #6b7280;">جميع الحقوق محفوظة لكل باحث عن الأجر والثواب</p>
+    </footer>
+
+    <!-- البرمجة ومنطق الموقع (JavaScript) -->
+    <script>
+        // تبديل الأقسام بسلاسة
+        function switchTab(tabId, event) {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // قائمة السور القرآنية الأساسية كاملة للاختيار
+        const surahsList = [
+            {number: 1, name: "الفاتحة"}, {number: 2, name: "البقرة"}, {number: 3, name: "آل عمران"},
+            {number: 4, name: "النساء"}, {number: 5, name: "المائدة"}, {number: 6, name: "الأنعام"},
+            {number: 7, name: "الأعراف"}, {number: 8, name: "الأنفال"}, {number: 9, name: "التوبة"},
+            {number: 10, name: "يونس"}, {number: 11, name: "هود"}, {number: 12, name: "يوسف"},
+            {number: 13, name: "الرعد"}, {number: 14, name: "إبراهيم"}, {number: 15, name: "الحجر"},
+            {number: 16, name: "النحل"}, {number: 17, name: "الإسراء"}, {number: 18, name: "الكهف"},
+            {number: 19, name: "مريم"}, {number: 20, name: "طه"}, {number: 21, name: "الأنبياء"},
+            {number: 22, name: "الحج"}, {number: 23, name: "المؤمنون"}, {number: 24, name: "النور"},
+            {number: 25, name: "الفرقان"}, {number: 26, name: "الشعراء"}, {number: 27, name: "النمل"},
+            {number: 28, name: "القصص"}, {number: 29, name: "العنكبوت"}, {number: 30, name: "الروم"},
+            {number: 31, name: "لقمان"}, {number: 32, name: "السجدة"}, {number: 33, name: "الأحزاب"},
+            {number: 34, name: "سبأ"}, {number: 35, name: "فاطر"}, {number: 36, name: "يس"},
+            {number: 37, name: "الصافات"}, {number: 38, name: "ص"}, {number: 39, name: "الزمر"},
+            {number: 40, name: "غافر"}, {number: 41, name: "فصلت"}, {number: 42, name: "الشورى"},
+            {number: 43, name: "الزخرف"}, {number: 44, name: "الدخان"}, {number: 45, name: "الجاثية"},
+            {number: 46, name: "الأحقاف"}, {number: 47, name: "محمد"}, {number: 48, name: "الفتح"},
+            {number: 49, name: "الحجرات"}, {number: 50, name: "ق"}, {number: 51, name: "الذاريات"},
+            {number: 52, name: "الطور"}, {number: 53, name: "النجم"}, {number: 54, name: "القمر"},
+            {number: 55, name: "الرحمن"}, {number: 56, name: "الواقعة"}, {number: 57, name: "الحديد"},
+            {number: 58, name: "المجادلة"}, {number: 59, name: "الحشر"}, {number: 60, name: "الممتحنة"},
+            {number: 61, name: "الصف"}, {number: 62, name: "الجمعة"}, {number: 63, name: "المنافقون"},
+            {number: 64, name: "التغابن"}, {number: 65, name: "الطلاق"}, {number: 66, name: "التحريم"},
+            {number: 67, name: "الملك"}, {number: 68, name: "القلم"}, {number: 69, name: "الحاقة"},
+            {number: 70, name: "المعارج"}, {number: 71, name: "نوح"}, {number: 72, name: "الجن"},
+            {number: 73, name: "المزمل"}, {number: 74, name: "المدثر"}, {number: 75, name: "القيامة"},
+            {number: 76, name: "الإنسان"}, {number: 77, name: "المرسلات"}, {number: 78, name: "النبأ"},
+            {number: 79, name: "النازعات"}, {number: 80, name: "عبس"}, {number: 81, name: "التكوير"},
+            {number: 82, name: "الانفطار"}, {number: 83, name: "المطففين"}, {number: 84, name: "الانشقاق"},
+            {number: 85, name: "البروج"}, {number: 86, name: "الطارق"}, {number: 87, name: "الأعلى"},
+            {number: 88, name: "الغاشية"}, {number: 89, name: "الفجر"}, {number: 90, name: "البلد"},
+            {number: 91, name: "الشمس"}, {number: 92, name: "الليل"}, {number: 93, name: "الضحى"},
+            {number: 94, name: "الشرح"}, {number: 95, name: "التين"}, {number: 96, name: "العلق"},
+            {number: 97, name: "القدر"}, {number: 98, name: "البينة"}, {number: 99, name: "الزلزلة"},
+            {number: 100, name: "العاديات"}, {number: 101, name: "القارعة"}, {number: 102, name: "التكاثر"},
+            {number: 103, name: "العصر"}, {number: 104, name: "الهمزة"}, {number: 105, name: "الفيل"},
+            {number: 106, name: "قريش"}, {number: 107, name: "الماعون"}, {number: 108, name: "الكوثر"},
+            {number: 109, name: "الكافرون"}, {number: 110, name: "النصر"}, {number: 111, name: "المسد"},
+            {number: 112, name: "الإخلاص"}, {number: 113, name: "الفلق"}, {number: 114, name: "الناس"}
+        ];
+
+        // تهيئة القوائم عند فتح الصفحة
+        window.onload = function() {
+            const selectRead = document.getElementById('surahSelect');
+            const selectAudio = document.getElementById('audioSurahSelect');
+            
+            surahsList.forEach(s => {
+                let opt1 = document.createElement('option');
+                opt1.value = s.number;
+                opt1.textContent = `${s.number}. سورة ${s.name}`;
+                selectRead.appendChild(opt1);
+
+                let opt2 = document.createElement('option');
+                opt2.value = s.number;
+                opt2.textContent = `${s.number}. سورة ${s.name}`;
+                selectAudio.appendChild(opt2);
+            });
+            loadSurahText();
+        }
+
+        // جلب وعرض نص الآيات من API القرآن الكريم
+        async function loadSurahText() {
+            const surahNum = document.getElementById('surahSelect').value;
+            const textBox = document.getElementById('quranTextBox');
+            textBox.innerHTML = "جاري تحميل آيات السورة...";
+            
+            try {
+                const response = await fetch(`https://api.alquran.cloud/v1/surah/${surahNum}`);
+                const data = await response.json();
+                if(data.code === 200) {
+                    let ayahsText = data.data.ayahs.map(a => `${a.text} <span style="color: var(--primary); font-size: 1.3rem;">﴿${a.numberInSurah}﴾</span>`).join(' ');
+                    textBox.innerHTML = `<div style="text-align: center; color: var(--primary); font-weight: bold; margin-bottom: 20px; font-size: 2.2rem;">سورة ${data.data.name}</div>` + (surahNum !== '1' && surahNum !== '9' ? '<div style="text-align: center; margin-bottom: 15px; font-size: 1.8rem;">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>' : '') + ayahsText;
+                } else {
+                    textBox.innerHTML = "عفواً، تعذر تحميل الآيات في الوقت الحالي.";
+                }
+            } catch (error) {
+                textBox.innerHTML = "خطأ في الاتصال بالإنترنت، يرجى التحقق من الشبكة.";
+            }
+        }
+
+        // إداراة الصوتيات والشيوخ
+        let currentServer = 'https://server11.mp3quran.net/yasser/';
+        let currentSheikhName = 'الشيخ ياسر الدوسري';
+
+        function selectSheikh(serverUrl, sheikhName, element) {
+            currentServer = serverUrl;
+            currentSheikhName = sheikhName;
+            document.querySelectorAll('.sheikh-card').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            playAudio();
+        }
+
+        function playAudio() {
+            const surahNum = document.getElementById('audioSurahSelect').value;
+            const formattedNum = String(surahNum).padStart(3, '0');
+            const audioPlayer = document.getElementById('audioPlayer');
+            const title = document.getElementById('currentPlayingTitle');
+
+            const audioUrl = `${currentServer}${formattedNum}.mp3`;
+            audioPlayer.src = audioUrl;
+            audioPlayer.play();
+            
+            const selectedSurahObj = surahsList.find(s => s.number == surahNum);
+            title.textContent = `جاري الاستماع الآن: سورة ${selectedSurahObj ? selectedSurahObj.name : ''} بصوت ${currentSheikhName}`;
+        }
+
+        // منطق المسبحة الإلكترونية
+        let count = 0;
+        function incrementSebha() {
+            count++;
+            document.getElementById('counter').textContent = count;
+            if (navigator.vibrate) navigator.vibrate(30); // اهتزاز خفيف للأجهزة الذكية
+        }
+
+        function resetSebha() {
+            count = 0;
+            document.getElementById('counter').textContent = count;
+        }
+    </script>
+</body>
+</html>
